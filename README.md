@@ -1,5 +1,7 @@
 # animacoes_implicitas_fab
 
+<img src="concluded.gif">
+
 A new Flutter project.
 
 ## Getting Started
