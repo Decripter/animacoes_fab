@@ -1,6 +1,6 @@
 # animacoes_implicitas_fab
 
-<img src="concluded.gif">
+<img src="controladas.gif">
 
 A new Flutter project.
 
