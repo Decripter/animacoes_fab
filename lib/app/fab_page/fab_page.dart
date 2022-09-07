@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 import 'components/custom_floating_animation_button.dart';
 
@@ -15,6 +16,9 @@ class _FabPageState extends State<FabPage> with SingleTickerProviderStateMixin {
   late Animation<double> widthAnimation;
   late Animation<BorderRadius> borderAnimation;
   late Animation<RotatedBox> iconAnimation;
+
+//for game easteregg
+  late Ticker _ticker;
 
   @override
   void initState() {
@@ -78,6 +82,7 @@ class _FabPageState extends State<FabPage> with SingleTickerProviderStateMixin {
         title: const Text('Desafio do botão flutuante'),
       ),
       body: GestureDetector(
+        onLongPress: playGame,
         onTap: changeState,
         child: Align(
           alignment: alignAnimation.value, //bottomRight,
@@ -104,4 +109,6 @@ class _FabPageState extends State<FabPage> with SingleTickerProviderStateMixin {
       controller.forward();
     }
   }
+
+  void playGame() {}
 }
