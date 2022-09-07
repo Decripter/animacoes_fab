@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'components/custom_floating_animation_button.dart';
+
 class FabPage extends StatefulWidget {
   const FabPage({Key? key}) : super(key: key);
 
@@ -7,8 +9,68 @@ class FabPage extends StatefulWidget {
   State<FabPage> createState() => _FabPageState();
 }
 
-class _FabPageState extends State<FabPage> {
-  MyFloatingActionButton fabState = MyFloatingActionButton.circular();
+class _FabPageState extends State<FabPage> with SingleTickerProviderStateMixin {
+  late final AnimationController controller;
+  late Animation<Alignment> alignAnimation;
+  late Animation<double> widthAnimation;
+  late Animation<BorderRadius> borderAnimation;
+  late Animation<RotatedBox> iconAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
+    controller.addListener(() {
+      setState(() {});
+    });
+    //Alignment
+    alignAnimation = Tween<Alignment>(
+      begin: MyFloatingActionButton.circular().alignment,
+      end: MyFloatingActionButton.rectangle().alignment,
+    ).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: const Interval(
+          0.0,
+          0.6,
+          curve: Curves.decelerate,
+        ),
+      ),
+    );
+    //Width
+    widthAnimation = Tween<double>(
+      begin: MyFloatingActionButton.circular().width,
+      end: MyFloatingActionButton.rectangle().width,
+    ).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: const Interval(
+          0.5,
+          1,
+          curve: Curves.ease,
+        ),
+      ),
+    );
+
+    //Border
+    borderAnimation = Tween<BorderRadius>(
+      begin: MyFloatingActionButton.circular().borderRadius,
+      end: MyFloatingActionButton.rectangle().borderRadius,
+    ).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: const Interval(
+          0.5,
+          0.7,
+          curve: Curves.ease,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,20 +79,17 @@ class _FabPageState extends State<FabPage> {
       ),
       body: GestureDetector(
         onTap: changeState,
-        child: AnimatedAlign(
-          duration: const Duration(milliseconds: 300),
-          alignment: fabState.alignment, //bottomRight,
+        child: Align(
+          alignment: alignAnimation.value, //bottomRight,
           child: Padding(
             padding: const EdgeInsets.all(14.0),
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              width: fabState.width,
-              height: fabState.height,
+            child: Container(
+              width: widthAnimation.value,
+              height: 60,
               decoration: BoxDecoration(
                 color: Colors.blueAccent,
-                borderRadius: fabState.borderRadius,
+                borderRadius: borderAnimation.value,
               ),
-              child: (fabState.icon),
             ),
           ),
         ),
@@ -39,67 +98,10 @@ class _FabPageState extends State<FabPage> {
   }
 
   void changeState() {
-    setState(() {
-      if (fabState.shape == FabShape.circle) {
-        fabState = MyFloatingActionButton.rectangle();
-      } else {
-        fabState = MyFloatingActionButton.circular();
-      }
-    });
-  }
-}
-
-enum FabShape { circle, rectangle }
-
-class MyFloatingActionButton {
-  final Alignment alignment;
-  final double width;
-  final double height;
-  final FabShape shape;
-  final BorderRadius borderRadius;
-  final Icon icon;
-
-  MyFloatingActionButton({
-    required this.alignment,
-    required this.borderRadius,
-    required this.width,
-    required this.height,
-    required this.shape,
-    required this.icon,
-  });
-
-  ///MyFloatingutton on Circular Shape already done
-  ///this include all properties that this object will need
-  ///to make a Circle
-  factory MyFloatingActionButton.circular() {
-    return MyFloatingActionButton(
-      alignment: Alignment.bottomRight,
-      width: 60.0,
-      height: 60.0,
-      shape: FabShape.circle,
-      borderRadius: BorderRadius.circular(50),
-      icon: const Icon(
-        Icons.arrow_circle_up_outlined,
-        color: Colors.white,
-      ),
-    );
-  }
-
-  ///MyFloatingutton on Rectangle Shape already done
-  ///this include all properties that this object will need
-  ///to make a Rectangle
-
-  factory MyFloatingActionButton.rectangle() {
-    return MyFloatingActionButton(
-      alignment: Alignment.topCenter,
-      width: 250.0,
-      height: 50.0,
-      shape: FabShape.rectangle,
-      borderRadius: BorderRadius.circular(0),
-      icon: const Icon(
-        Icons.arrow_drop_down_circle_outlined,
-        color: Colors.white,
-      ),
-    );
+    if (controller.isCompleted) {
+      controller.reverse();
+    } else {
+      controller.forward();
+    }
   }
 }
