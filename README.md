@@ -1,22 +1,14 @@
-# animacoes_implicitas_fab
+# Animações Implicitas vs Controladas
+
+## Check each branch to see its code
+
+# <a href="https://github.com/Decripter/animacoes_implicitas_fab/tree/implicitas"> animacoes_implicitas_fab</a>
 
 <img src="implicitas.gif">
 
-# animacoes_controladas_fab
+# <a href="https://github.com/Decripter/animacoes_implicitas_fab/tree/controladas"> animacoes_controladas_fab</a>
 
 <img src="controladas.gif">
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
