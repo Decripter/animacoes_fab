@@ -18,12 +18,13 @@ class _FabPageState extends State<FabPage> {
       body: GestureDetector(
         onTap: changeState,
         child: AnimatedAlign(
-          duration: const Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 500),
           alignment: fabState.alignment, //bottomRight,
+          curve: Curves.easeInOut,
           child: Padding(
             padding: const EdgeInsets.all(14.0),
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 500),
               width: fabState.width,
               height: fabState.height,
               decoration: BoxDecoration(
