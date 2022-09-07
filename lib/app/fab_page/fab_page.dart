@@ -68,6 +68,9 @@ class MyFloatingActionButton {
     required this.icon,
   });
 
+  ///MyFloatingutton on Circular Shape already done
+  ///this include all properties that this object will need
+  ///to make a Circle
   factory MyFloatingActionButton.circular() {
     return MyFloatingActionButton(
       alignment: Alignment.bottomRight,
@@ -81,6 +84,11 @@ class MyFloatingActionButton {
       ),
     );
   }
+
+  ///MyFloatingutton on Rectangle Shape already done
+  ///this include all properties that this object will need
+  ///to make a Rectangle
+
   factory MyFloatingActionButton.rectangle() {
     return MyFloatingActionButton(
       alignment: Alignment.topCenter,
