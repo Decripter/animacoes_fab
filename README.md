@@ -2,13 +2,23 @@
 
 ## Check each branch to see its code
 
-# <a href="https://github.com/Decripter/animacoes_implicitas_fab/tree/implicitas"> animacoes_implicitas_fab</a>
 
-<img src="implicitas.gif">
+<table>
+<tr>
+<th> <a href="https://github.com/Decripter/animacoes_implicitas_fab/tree/implicitas"> animacoes_implicitas_fab</a> </th>
+<th> <a href="https://github.com/Decripter/animacoes_implicitas_fab/tree/controladas"> animacoes_controladas_fab</a> </th>
+</tr>
+<tr>
+<td>
+<img src="implicitas.gif" width="300" height="500">
 
-# <a href="https://github.com/Decripter/animacoes_implicitas_fab/tree/controladas"> animacoes_controladas_fab</a>
 
-<img src="controladas.gif">
+</td>
+<td>
+
+<img src="controladas.gif" width="300" height="500">
 
 
-
+</td>
+</tr>
+</table>
