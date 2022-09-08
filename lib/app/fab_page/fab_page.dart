@@ -84,6 +84,12 @@ class _FabPageState extends State<FabPage> with SingleTickerProviderStateMixin {
   }
 
   @override
+  void dispose() {
+    _ticker.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     if (!isPlayng) {
       xBall = MediaQuery.of(context).size.width - sizeBall - 15;

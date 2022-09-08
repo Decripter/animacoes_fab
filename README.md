@@ -1,6 +1,6 @@
 # animacoes_implicitas_fab
 
-<img src="controladas.gif">
+<img src="easteregg.gif">
 
 A new Flutter project.
 
